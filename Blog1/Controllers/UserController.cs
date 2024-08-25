@@ -129,6 +129,7 @@ namespace Blog1.Controllers
             return View(user);
         }
 
+
         public ActionResult Delete(int? id)
         {
             if (id == null)

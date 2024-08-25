@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Blog1.Models.Users>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+
+<div class="col-md-11 m-auto">
+    <p>
+        @Html.ActionLink("ثبت نام کاربر جدید", "Create", null, new { @class = "btn btn-primary mt-3" })
+    </p>
+    <div class="card">
+        <div class="card-header bg-gray">
+            <h3 class="card-title">لیست کاربران</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-condensed text-center">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.firstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.lastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.image)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.is_active)
+                        </th>
+                        <th>عملیات</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        
+                        <tr>
+                            <td class="align-middle">@(i++) </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.firstName)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.lastName)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => item.email)
+                            </td>
+                            <td class="align-middle">
+                                <img class="rounded-circle" src="~/images/profiles/@item.image" style="width:75px; height:75px" />
+                            </td>
+                            @if (item.is_active == true)
+                            {
+                                <td class="align-middle"><span class="text-success">فعال</span></td>
+                            }
+                            else
+                            {
+                                <td class="align-middle"><span class="text-danger">غیرفعال</span></td>
+                            }
+                            <td class="align-middle">
+                                @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "fa fa-edit text-warning font-20" }) |
+                                @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "fa fa-eye text-primary font-20" }) |
+                                @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "fa fa-trash text-danger font-20" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+

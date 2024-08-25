@@ -1,0 +1,63 @@
+﻿@model Blog1.Models.Users
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string name = Model.firstName + " " + Model.lastName;
+}
+
+<br />
+<div class="row">
+    <div class="col-11 m-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">جدول اطلاعات فردی <span class="text-primary">@name</span></h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table text-center">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.firstName)</th>
+                        <th>@Html.DisplayNameFor(model => model.lastName)</th>
+                        <th>@Html.DisplayNameFor(model => model.email)</th>
+                        <th>@Html.DisplayNameFor(model => model.image)</th>
+                        <th>@Html.DisplayNameFor(model => model.registerDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.gender)</th>
+                        <th>@Html.DisplayNameFor(model => model.is_active)</th>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">@Html.DisplayFor(model => model.firstName)</td>
+                        <td class="align-middle">@Html.DisplayFor(model => model.lastName)</td>
+                        <td class="align-middle">@Html.DisplayFor(model => model.email)</td>
+                        <td class="rounded-circle align-middle"><img class="rounded-circle" src="~/images/profiles/@Model.image" style="width:100px; height:100px" /></td>
+                        <td class="align-middle">@Html.DisplayFor(model => model.registerDate)</td>
+                        @if (Model.gender == false)
+                        {
+                            <td class="align-middle">مرد</td>
+                        }
+                        else
+                        {
+                            <td class="align-middle">زن</td>
+                        }
+
+                        @if (Model.is_active == true)
+                        {
+                            <td class="align-middle"><span class="text-success">فعال</span></td>
+                        }
+                        else
+                        {
+                            <td class="align-middle"><span class="text-danger">غیرفعال</span></td>
+                        }
+
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <p>
+            @Html.ActionLink("بازگشت به لیست کاربران", "Index", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("ویرایش اطلاعات فردی " + @name, "Edit", new { id = Model.id }, new { @class = "btn btn-warning text-light" })
+        </p>
+    </div>
+
+</div>
+

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Blog1.Models.Categories>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+<div class="col-md-11 m-auto">
+    <p>
+        @Html.ActionLink("افزودن دسته بندی جدید", "Create", null, new { @class = "btn btn-primary mt-3" })
+    </p>
+    <div class="card">
+        <div class="card-header bg-gray">
+            <h3 class="card-title">لیست دسته بندی ها</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-condensed text-center">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.created_at)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.is_active)
+                        </th>
+                        <th>عملیات</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@(i++)</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.created_at)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.is_active)
+                            </td>
+                            <td>
+                                @Html.ActionLink(" ", "Edit", new { id = item.id }, new { @class = "fa fa-edit text-warning font-20" }) |
+                                @Html.ActionLink(" ", "Details", new { id = item.id }, new { @class = "fa fa-eye text-primary font-20" }) |
+                                @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "fa fa-trash text-danger font-20" })
+                            </td>
+                        </tr>
+                    }
+
+            </table>
+        </div>
+    </div>
+</div>

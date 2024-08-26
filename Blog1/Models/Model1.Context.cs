@@ -27,5 +27,6 @@ namespace Blog1.Models
     
         public virtual DbSet<Articles> Articles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Categories> Categories { get; set; }
     }
 }

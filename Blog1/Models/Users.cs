@@ -11,38 +11,17 @@ namespace Blog1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Users
     {
         public int id { get; set; }
-        [DisplayName("نام")]
-        [Required(ErrorMessage ="پرکردن فیلد {0} اجباری است")]
         public string firstName { get; set; }
-
-        [DisplayName("نام خانوادگی")]
-        [Required(ErrorMessage = "پرکردن فیلد {0} اجباری است")]
         public string lastName { get; set; }
-
-        [DisplayName("ایمیل")]
-        [Required(ErrorMessage = "پرکردن فیلد {0} اجباری است")]
         public string email { get; set; }
-
-        [DisplayName("رمز عبور")]
-        [Required(ErrorMessage = "پرکردن فیلد {0} اجباری است")]
         public string password { get; set; }
-
-        [DisplayName("تصویر")]
         public string image { get; set; }
-
-        [DisplayName("تاریخ ثبت نام")]
         public System.DateTime registerDate { get; set; }
-
-        [DisplayName("جنسیت")]
         public Nullable<bool> gender { get; set; }
-
-        [DisplayName("وضعیت")]
         public bool is_active { get; set; }
     }
 }

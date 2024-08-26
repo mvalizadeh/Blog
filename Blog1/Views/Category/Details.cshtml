@@ -1,0 +1,50 @@
+﻿@model Blog1.Models.Categories
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string title = Model.title;
+}
+
+<br />
+<div class="row">
+    <div class="col-11 m-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">جدول دسته بندی <span class="text-primary">@title</span></h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table text-center">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.title)</th>
+                        <th>@Html.DisplayNameFor(model => model.description)</th>
+                        <th>@Html.DisplayNameFor(model => model.created_at)</th>
+                        <th>@Html.DisplayNameFor(model => model.is_active)</th>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">@Html.DisplayFor(model => model.title)</td>
+                        <td class="align-middle">@Html.DisplayFor(model => model.description)</td>
+                        <td class="align-middle">@Html.DisplayFor(model => model.created_at)</td>
+
+                        @if (Model.is_active == true)
+                        {
+                            <td class="align-middle"><span class="text-success">فعال</span></td>
+                        }
+                        else
+                        {
+                            <td class="align-middle"><span class="text-danger">غیرفعال</span></td>
+                        }
+
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <p>
+            @Html.ActionLink("بازگشت به لیست دسته بندی ها", "Index", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("ویرایش اطلاعات دسته بندی " + @title, "Edit", new { id = Model.id }, new { @class = "btn btn-warning text-light" })
+        </p>
+    </div>
+
+</div>
+
